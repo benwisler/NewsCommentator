@@ -1,0 +1,25 @@
+
+body {
+    color: red;
+    background-color: blue;
+}
+a {
+    font-size: 100px;
+}
+.row {
+    margin: 0 auto;
+    width: 800px;
+
+}
+.card {
+    margin: 0 auto;
+    height: 100%;
+    width: 800px;
+
+}
+.container {
+    padding: 0px;
+}
+.card-body {
+    margin-top: 15px;
+}

@@ -1,0 +1,74 @@
+<body>
+    <div class="container"></div>
+    <div class="card text-center">
+        <div class="card-header">
+            News Scraper
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Your Saved Articles</h5>
+            <p class="card-text">Scrape, Save, and Comment</p>
+            <a href="/s" class="btn btn-primary">Scrape New Articles</a>
+            <a href="/" class="btn btn-primary">Go Home</a>
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+    </div>
+
+
+        {{!-- for each article in mongodb --}} {{#each articleData}} {{#if this.saved}}
+
+        <div class="row">
+            <div class="col-lrg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.title}}</h5>
+                        <p class="card-text">{{this.summary}}</p>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="userComment">Leave A Comment</label>
+                                <textarea id="{{this._id}}AA" class="form-control" rows="2"></textarea>
+                                <button type="submit" data-id="{{this._id}}" id="noted" class="btn btn-primary" value="Submit">Submit</button>
+
+                            </div>
+                        </form>
+                        <p>
+                            <a target="_blank" href="http://www.bbc.com{{this.link}}" class="btn btn-primary">Site Link</a>
+                            <a href="/remove/{{this._id}}" id="remove" class="btn btn-primary">Remove</a>
+
+                            <button class="btn btn-primary" data-id="{{this._id}}" class="btn btn-primary" type="button" data-toggle="collapse"
+                                data-target="#{{this.id}}" aria-expanded="false" aria-controls="collapseExample">
+                                View Comments
+                            </button>
+
+
+                        </p>
+                        <div class="collapse" id="{{this.id}}">
+
+
+                            <div class="noteDiv{{this._id}}"></div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}} {{/each}}
+
+    <script src="/assets/js/app.js"></script>
+<footer>
+    <div class="card text-center">
+  <div class="card-header">
+    BBC News Scraper
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Thanks for visiting!</h5>
+  </div>
+  <div class="card-footer text-muted">
+    Ben Wisler
+  </div>
+</div>
+</footer>
+</body>

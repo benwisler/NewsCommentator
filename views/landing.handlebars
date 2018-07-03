@@ -1,0 +1,74 @@
+<div class="card text-center">
+    <div class="card-header">
+        News Scraper
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">BBC Headline Scraper</h5>
+        <p class="card-text">Scrape, Save, and Comment</p>
+        <a href="/s" class="btn btn-primary">Scrape New Articles</a>
+        <a href="/saved" class="btn btn-primary">View Saved Articles</a>
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+</div>
+
+<div class="container">
+    {{!-- for each article in mongodb --}} {{#each articleData}} {{!-- create a row, column, and card --}}
+    <div class="row">
+        <div class="col-lrg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{this.summary}}</p>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="userComment">Leave A Comment</label>
+                            <textarea id="{{this._id}}AA" class="form-control" rows="2"></textarea>
+                            <button type="submit" data-id="{{this._id}}" id="noted" class="btn btn-primary" value="Submit">Submit</button>
+
+                        </div>
+                    </form>
+                    <p>
+                        <a target="_blank" href="http://www.bbc.com{{this.link}}" class="btn btn-primary">Site Link</a>
+                        <a id="save" href="/save/{{this._id}}" class="btn btn-primary">Save</a>
+                        <button class="btn btn-primary" id="viewNotes" data-id="{{this._id}}" class="btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#{{this.id}}" aria-expanded="false" aria-controls="collapseExample">
+                            View Comments
+                        </button>
+
+
+                    </p>
+                    <div class="collapse" id="{{this.id}}">
+
+
+                        <div class="noteDiv{{this._id}}"></div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    {{/each}}
+<footer>
+    <div class="card text-center">
+  <div class="card-header">
+    BBC News Scraper
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Thanks for visiting!</h5>
+  </div>
+  <div class="card-footer text-muted">
+    Ben Wisler
+  </div>
+</div>
+</footer>
+</div>
